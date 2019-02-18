@@ -466,7 +466,7 @@ public class Field implements MetatronDomain<Long> {
 
     TimeFieldFormat timeFieldFormat = (TimeFieldFormat) fieldFormat;
 
-    DateTime defaultReplaceDateTime = DateTime.now(DateTimeZone.forID(timeFieldFormat.getTimeZone()));
+    DateTime defaultReplaceDateTime = DateTime.now(DateTimeZone.forID(timeFieldFormat.selectTimezone()));
     timestampSpec.setInvalidValue(defaultReplaceDateTime);
     timestampSpec.setMissingValue(defaultReplaceDateTime);
 
@@ -483,7 +483,7 @@ public class Field implements MetatronDomain<Long> {
       timestampSpec.setFormat(timeFieldFormat.getFormat());
     }
 
-    timestampSpec.setTimeZone(timeFieldFormat.getTimeZone());
+    timestampSpec.setTimeZone(timeFieldFormat.selectTimezone());
     timestampSpec.setLocale(timeFieldFormat.getLocale());
 
     return timestampSpec;
